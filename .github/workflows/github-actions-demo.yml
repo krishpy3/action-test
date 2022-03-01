@@ -29,6 +29,7 @@ jobs:
         run: |
           ls ${{ github.workspace }} >> list_of_files.txt
           git checkout -b test
+          git pull origin test
           mvn versions:set -DnewVersion=$NEXT_RELEASE_VERSION
           git add list_of_files.txt pom.xml
           git commit -m "from action"
