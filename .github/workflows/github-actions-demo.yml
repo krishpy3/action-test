@@ -1,12 +1,12 @@
 name: GitHub Actions Demo
 
-on: [push]
-
-inputs:
-  branchname:
-    description: 'Branch name'
-    required: false
-    default: 'test1'
+on: 
+  push:
+    inputs:
+      branchname:
+        description: 'Branch name'
+        required: false
+        default: 'test1'
 
 jobs:
   Explore-GitHub-Actions:
