@@ -1,0 +1,23 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure Git
+        uses: oleksiyrudenko/gha-git-credentials@v2-latest
+        with:
+          token: '${{ secrets._GITHUB_TOKEN }}'
+    
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Create new branch and commit
+        run: |
+          ls ${{ github.workspace }} >> list_of_files.txt
+          git checkout -b test
+          git add list_of_files.txt
+          git commit -m "from action"
+          git push -u origin test
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."
