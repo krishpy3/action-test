@@ -1,0 +1,5 @@
+README.md
+list_of_files.txt
+my-app
+pom.xml
+target
