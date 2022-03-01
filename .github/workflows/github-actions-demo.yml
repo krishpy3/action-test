@@ -2,6 +2,12 @@ name: GitHub Actions Demo
 
 on: [push]
 
+inputs:
+  NEW_BRANCH:
+    description: 'Branch name'
+    required: false
+    default: 'test1'
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -28,12 +34,11 @@ jobs:
       - name: Create new branch and commit
         run: |
           ls ${{ github.workspace }} >> list_of_files.txt
-          git checkout -b test
-          git pull origin test
-          mvn versions:set -DnewVersion=$NEXT_RELEASE_VERSION
+          git checkout -b ${{ inputs.NEW_BRANCH }}
+          mvn versions:set -DnewVersion=10.1
           git add list_of_files.txt pom.xml
           git commit -m "from action"
-          git push -u origin test
+          git push -u origin ${{ inputs.NEW_BRANCH }}
 
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
