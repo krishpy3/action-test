@@ -4,13 +4,13 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+    
       - name: Configure Git
         uses: oleksiyrudenko/gha-git-credentials@v2-latest
         with:
           token: '${{ secrets._GITHUB_TOKEN }}'
-    
-      - name: Check out repository code
-        uses: actions/checkout@v2
 
       - name: Create new branch and commit
         run: |
