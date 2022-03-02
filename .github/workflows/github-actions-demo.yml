@@ -30,14 +30,14 @@ jobs:
       # - name: Build with Maven
       #   run: mvn --batch-mode --update-snapshots verify
 
-      - name: Docker build and push
-        uses: mr-smithers-excellent/docker-build-push@v5
-        with:
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/image
-          tags: v1, latest
-          registry: docker.io
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      # - name: Docker build and push
+      #   uses: mr-smithers-excellent/docker-build-push@v5
+      #   with:
+      #     image: ${{ secrets.DOCKERHUB_USERNAME }}/image
+      #     tags: v1, latest
+      #     registry: docker.io
+      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Harbour Docker build and push
         uses: mr-smithers-excellent/docker-build-push@v5
