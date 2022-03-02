@@ -42,7 +42,7 @@ jobs:
       - name: Harbour Docker build and push
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: ${{ secrets.HARBOUR_USERNAME }}/your-project/image
+          image: your-project/image
           tags: latest
           registry: demo.goharbor.io
           username: ${{ secrets.HARBOUR_USERNAME }}
