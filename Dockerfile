@@ -1,2 +1,1 @@
-FROM alpine:latest
-ENTRYPOINT ls /
+FROM busybox:latest
