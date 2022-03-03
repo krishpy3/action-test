@@ -39,14 +39,14 @@ jobs:
       #     username: ${{ secrets.DOCKERHUB_USERNAME }}
       #     password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Harbour Docker build and push
-        uses: mr-smithers-excellent/docker-build-push@v5
-        with:
-          image: your-project/test-image
-          tags: latest
-          registry: demo.goharbor.io
-          username: ${{ secrets.HARBOUR_USERNAME }}
-          password: ${{ secrets.HARBOUR_TOKEN }}
+      # - name: Harbour Docker build and push
+      #   uses: mr-smithers-excellent/docker-build-push@v5
+      #   with:
+      #     image: your-project/test-image
+      #     tags: latest
+      #     registry: demo.goharbor.io
+      #     username: ${{ secrets.HARBOUR_USERNAME }}
+      #     password: ${{ secrets.HARBOUR_TOKEN }}
 
       # - name: Create new branch and commit
       #   run: |
@@ -56,6 +56,13 @@ jobs:
       #     git add list_of_files.txt pom.xml
       #     git commit -m "from action"
       #     git push -u origin test2
+
+      - name: docker manual
+        run: |
+          echo $${{ secrets.HARBOUR_TOKEN }} | docker login -u${{ secrets.HARBOUR_USERNAME }} --password-stdin demo.goharbor.io
+          docker build -t testnew src/main/docker
+          docker tag testnew ${{ secrets.HARBOUR_USERNAME }}/test/testnew:latest
+          docker push ${{ secrets.HARBOUR_USERNAME }}/test/testnew:latest
 
 
       # - run: echo "🍏 This job's status is ${{ job.status }}."
