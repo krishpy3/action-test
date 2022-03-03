@@ -30,7 +30,7 @@ jobs:
           echo ${{ secrets.HARBOUR_TOKEN }} | docker login -u${{ secrets.HARBOUR_USERNAME }} --password-stdin demo.goharbor.io
           docker build -t testnew src/main/docker
           docker tag testnew ${{ secrets.HARBOUR_USERNAME }}/test/testnew:latest
-          docker push ${{ secrets.HARBOUR_USERNAME }}/test/testnew:latest
+          docker push demo.goharbor.io/${{ secrets.HARBOUR_USERNAME }}/test/testnew:latest
 
       - name: Create new branch and commit
         run: |
