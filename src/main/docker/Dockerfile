@@ -1,1 +1,1 @@
-FROM demo.goharbor.io/your-project/image:latest
+FROM busybox:latest
