@@ -39,10 +39,10 @@ jobs:
 
       - name: Create new branch and commit
         run: |
-          git checkout -b test4
-          mvn versions:set -DnewVersion=10.5
+          git checkout -b test5
+          mvn versions:set -DnewVersion=10.6
           git add pom.xml
           git commit -m "from action"
-          git push -u origin test4
+          git push -u origin test5
 
       - run: echo "This job's status is ${{ job.status }}."
